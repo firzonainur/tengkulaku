@@ -100,6 +100,47 @@
             </li>
             <?php 
                 endif;
+                 if ($_SESSION['level'] == 'customer') :
             ?>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Data
+            </div>
+
+            <!-- Nav Item - Tambah Produk -->
+            <li class="nav-item">
+                <a class="nav-link" href="?url=daftarPesananCustomer">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Data Pesanan</span></a>
+
+            <?php endif; ?>
+
+           <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+               
+            </div>
+
+            <!-- Sidebar Message -->
+            <div class="sidebar-card d-none d-lg-flex">
+                <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
+                <p class="text-center mb-2"><strong>Back to Home</strong> Beli Sesuai Kebutuhan Anda</p>
+                <a class="btn btn-success btn-sm" href="../index.php">Home</a>
+
+            </div>
+
+            <div class="sidebar-card d-none d-lg-flex">
+                <button class="text-center rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            
+
+
         </ul>
         <!-- End of Sidebar -->

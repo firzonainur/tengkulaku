@@ -43,6 +43,7 @@
                      case 'kontak':
                         include 'front/page/kontak.php';
                         break;
+                     
                     default:
                         include 'front/page/home.php';
                         break;
