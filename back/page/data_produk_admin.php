@@ -2,7 +2,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Produk</h1>
-                    <p class="mb-4"> Berikut Data produk Anda</p>
+                    <p class="mb-4"> Silahkan Validasi Data Produk Dari Seller</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -22,29 +22,31 @@
                                             <th>Deskripsi</th>
                                             <th>Status</th>
                                             <th>Upload</th>
+                                            <th>Seller</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     
                                     <tbody>
                                         <?php 
-                                            $sql = mysqli_query($conn, "SELECT p.*, (SELECT k.nama_kategori FROM kategori k where k.id_kategori = p.id_kategori) as kategori FROM produk p where id_user = " . $_SESSION['id_user']);
+                                            $sql = mysqli_query($conn, "SELECT * FROM produk ");
                                             while ($hasil = mysqli_fetch_array($sql)) :
                                         ?>
                                         <tr>
-                                            <td class="text-center"><img src="img/produk/<?= $hasil['foto'] ?>" class="img-thumbnail" alt="..." style="height: 90px; width:160px;"></td>
+                                            <td class="text-center"><img src="img/produk/<?= $hasil['foto'] ?>" class="img-thumbnail" alt="..." style="height: 50px; width:50px;"></td>
                                             <td><?= $hasil['nama_produk'] ?></td>
                                             <td><?= $hasil['harga'] ?></td>
                                             <td><?= $hasil['stok'] ?></td>
-                                            <td><?= $hasil['kategori'] ?></td>
+                                            <td><?= $hasil['id_kategori'] ?></td>
                                             <td><?= $hasil['deskripsi'] ?></td>
                                             <td><?= $hasil['verifikasi'] ?></td>
                                             <td><?= $hasil['tgl_upload'] ?></td>
+                                            <td><?= $hasil['id_user'] ?></td>
                                             <td class="text-center">
-                                                <a href="fungsi/edit.php?id=<?= $hasil['id_produk'] ?>" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
-                                                <a href="fungsi/hapus.php?id=<?= $hasil['id_produk'] ?>" class="btn btn-danger btn-circle">
+                                                <a href="fungsi/validasi_produk.php?id=<?=$hasil['id_produk'] ?>" class="btn btn-success btn-circle">
+                                                    <i class="fas fa-check"></i>
+                                                </a> 
+                                                <a href="fungsi/hapus_produk_admin.php?id=<?= $hasil['id_produk'] ?>" class="btn btn-danger btn-circle">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
                                             </td>

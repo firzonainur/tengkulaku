@@ -1,13 +1,17 @@
+<?php 
+    session_start();  
+    require 'login/fungsi/koneksi.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
   <head>
-      <?php require 'front/partials/_head.php' ?>
+      <?php require 'front/partials/_head.php';?>
   </head>
     
     <body>
     
-    <?php require 'front/partials/_preloader.php' ?>
+    <?php //require 'front/partials/_preloader.php' ?>
 
     <?php require 'front/partials/_navbar.php' ?>
     
@@ -53,7 +57,7 @@
     <!-- ***** Footer Start ***** -->
     <?php require 'front/partials/_footer.php' ?>
     
-
+    <?php require 'front/partials/_logout.php'?>
     
     <?php require 'front/partials/_javascript.php' ?>
   </body>

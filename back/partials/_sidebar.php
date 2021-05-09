@@ -19,12 +19,14 @@
                     <span>Dashboard</span></a>
             </li>
 
+            <?php if ($_SESSION['level'] == 'seller') : ?>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Tambah Data
+                Produk
             </div>
 
             <!-- Nav Item - Tambah Produk -->
@@ -33,14 +35,6 @@
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Tambah Produk</span></a>
             </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Validasi
-            </div>
 
             <!-- Nav Item - Tambah Produk -->
             <li class="nav-item">
@@ -64,7 +58,48 @@
                     <span>Daftar Order</span></a>
             </li>
 
-          
 
+            <?php 
+                endif;
+                if ($_SESSION['level'] == 'admin') :
+             ?>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Validasi
+            </div>
+
+            <!-- Nav Item - Tambah Produk -->
+            <li class="nav-item">
+                <a class="nav-link" href="?url=daftarProdukAdmin">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Daftar Produk</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Data
+            </div>
+
+            <!-- Nav Item - Tambah Produk -->
+            <li class="nav-item">
+                <a class="nav-link" href="?url=daftarSellerAdmin">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Data Seller</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="?url=daftarCustomerAdmin">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Data Customer</span></a>
+            </li>
+            <?php 
+                endif;
+            ?>
         </ul>
         <!-- End of Sidebar -->

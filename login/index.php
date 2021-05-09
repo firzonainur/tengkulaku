@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    require '../login/fungsi/koneksi.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,24 +22,35 @@
         <!-- Sign Up -->
         <div class="col align-center flex-col sign-up">
           <div class="form-wrapper align-center">
-            <form class="form sign-up">
+            <form class="form sign-up" method="POST" action="fungsi/fungsi_registrasi.php">
               <div class="input-group">
                 <i class="bx bxs-user"></i>
-                <input type="text" placeholder="Username" />
+                <input type="text" placeholder="Nama" name="nama" required="" />
               </div>
               <div class="input-group">
-                <i class="bx bx-mail-send"></i>
-                <input type="email" placeholder="Email" />
+                <i class="bx bxs-user"></i>
+                <input type="email" placeholder="Email" name="username" required="" />
+              </div>
+              
+              <div class="input-group">
+                <i class="bx bxs-lock-alt"></i>
+                <input type="password" placeholder="Password" name="password" required="" id="pass" />
               </div>
               <div class="input-group">
                 <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Confirm password" name="konfirmasi" required="" id="konf" />
               </div>
-              <div class="input-group">
-                <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Confirm password" />
+              <div style="margin-bottom: 20px;">
+                <label style="margin-right: 10px;"> Daftar Sebagai : </label>
+                 <label class="radio-inline">
+                  <input type="radio" name="level" value="customer" > Customer
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" name="level" value="seller" > Seller
+                </label>
+                
               </div>
-              <button>Daftar</button>
+              <button type="submit" onclick="return cek()">Daftar</button>
               <p>
                 <span>Sudah Mempunyai Akun ?</span>
                 <b id="sign-in">Login Disini</b>
@@ -62,16 +77,17 @@
         </div>
         <!-- End Sign Up -->
         <!-- Sign In -->
-        <div class="col align-center flex-col sign-in">
+        <div class="col align-center flex-col sign-in"> 
           <div class="form-wrapper align-center">
+            <form method="POST" action="fungsi/fungsi_login.php">
             <div class="form sign-in">
               <div class="input-group">
                 <i class="bx bxs-user"></i>
-                <input type="text" placeholder="Username" />
+                <input type="text" placeholder="Username" name="username" required="" />
               </div>
               <div class="input-group">
                 <i class="bx bxs-lock-alt"></i>
-                <input type="password" placeholder="Password" />
+                <input type="password" placeholder="Password" name="password" required="" />
               </div>
               <button>Login</button>
               <p>
@@ -82,7 +98,9 @@
                 <b id="sign-up">Daftar Disini</b>
               </p>
             </div>
+          </form>
           </div>
+          
 
           <div class="form-wrapper">
             <div class="social-list align-center sign-in">

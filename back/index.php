@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    require '../login/fungsi/koneksi.php';
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,11 +39,24 @@
                     case 'dashboard':
                         include 'page/beranda.php';
                         break;
+                     case 'profil':
+                        include 'page/profil.php';
+                        break;
                     case 'tambahProduk':
                         include 'page/tambah_produk.php';
                         break;
                     case 'daftarProduk':
                         include 'page/data_produk.php';
+                        break;
+                    // Admin
+                    case 'daftarProdukAdmin':
+                        include 'page/data_produk_admin.php';
+                        break;
+                    case 'daftarSellerAdmin':
+                        include 'page/data_seller_admin.php';
+                        break;
+                    case 'daftarCustomerAdmin':
+                        include 'page/data_customer_admin.php';
                         break;
                     default:
                         include 'page/beranda.php';

@@ -1,4 +1,5 @@
     <!-- ***** Call to Action Start ***** -->
+
     <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/PASAR.jpg)">
         <div class="container">
             <div class="row">
@@ -20,21 +21,28 @@
         <div class="container">
             <br>
             <br>
-
             <div class="row">
+                    <?php 
+                        $sql = mysqli_query($conn, "SELECT * FROM produk WHERE verifikasi='diterima' ");
+                        while ($hasil = mysqli_fetch_array($sql)) {
+                    ?>
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="assets/images/jeruk 3.jpg" alt="">
+                            <img src="back/img/produk/<?= $hasil['foto'] ?>" alt="">
                         </div>
                         <div class="down-content">
                             <span>
-                                <sup>Rp</sup>10.000/Kg
+                                <sup>Rp</sup><?php echo $hasil['harga']; ?>/Kg
                             </span>
 
-                            <h4>Jeruk Manis Khas Malang</h4>
+                            <span style="margin-left: 100px">
+                                <sup></sup>Penjual : <?php echo $hasil['id_user']; ?>
+                            </span>
 
-                            <p>Jeruk manis ini memiliki ukuran yang lebih besar dari jeruk biasanya. Teksturnya dalamnya lebih lembut. Jeruk manis ini merupakan hasil budidaya petani lokal dari Kab. Malang yang bekerja sama dengan Tengkulaku sehingga dapat membantu menekan harga jual dan juga meningkatkan kualitas produk.</p>
+                            <h4><?php echo $hasil['nama_produk']; ?></h4>
+
+                            <p><?php echo $hasil['deskripsi']; ?></p>
 
                             <ul class="social-icons">
                                 <li><a href="?url=detailProduk">+ Order</a></li>
@@ -42,46 +50,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/apel 3.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <sup>Rp</sup>15.000/Kg
-                            </span>
-
-                            <h4>Apel Batu Kualitas Impor</h4>
-
-                            <p>Apel ini hasil budidaya dari Kelompok Tani Makmur Abadi Desa Tulungrejo, Batu. Apel ini memiliki rasa yang paling manis dan daging buahnya sedikit keras. Sedangkan aromanya begitu harum (wangi) dibandingkan jenis apel yang lain. Apel ini memiliki kandungan air yang cukup sedikit.</p>
-
-                            <ul class="social-icons">
-                                <li><a href="product-detail-apel.html">+ Order</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/mangga 2.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <sup>Rp</sup>8.500/Kg
-                            </span>
-
-                            <h4>Mangga Manis Manalagi</h4>
-
-                            <p>Mangga manis ini merupakan jenis mangga yang berasal dari wilayah Probolinggo. Mangga ini memiliki ukuran yang kecil dan sedang dengan kulit luar yang tebal. Mangga manalagi ini memiliki daging buah yang tebal dan padat dengan rasa yang sangat manis.</p>
-
-                            <ul class="social-icons">
-                                <li><a href="product-detail-mangga.html">+ Order</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    <?php }; ?>
+                
             </div>
 
             <br>

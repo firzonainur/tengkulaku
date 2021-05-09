@@ -24,57 +24,35 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+           <div class="row">
+                    <?php 
+                        $sql = mysqli_query($conn, "SELECT * FROM produk WHERE verifikasi='diterima' ");
+                        while ($hasil = mysqli_fetch_array($sql)) {
+                    ?>
                 <div class="col-lg-4">
                     <div class="trainer-item">
                         <div class="image-thumb">
-                            <img src="assets/images/jeruk 3.jpg" alt="">
+                            <img src="back/img/produk/<?= $hasil['foto'] ?>" alt="">
                         </div>
                         <div class="down-content">
                             <span>
-                                <sup>Rp</sup>10.000
+                                <sup>Rp</sup><?php echo $hasil['harga']; ?>/Kg
                             </span>
 
-                            <h4>Jeruk Manis Khas Malang</h4>
-                            <ul class="social-icons">
-                                <li><a href="product-detail-jeruk.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/apel 3.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                               <sup>Rp</sup>15.000
+                            <span style="margin-left: 100px">
+                                <sup></sup>Penjual : <?php echo $hasil['id_user']; ?>
                             </span>
 
-                            <h4>Apel Batu Kualitas Impor</h4>
+                            <h4><?php echo $hasil['nama_produk']; ?></h4>
+
                             <ul class="social-icons">
-                                <li><a href="product-detail-apel.html">+ View More</a></li>
+                                <li><a href="?url=detailProduk">View More</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="trainer-item">
-                        <div class="image-thumb">
-                            <img src="assets/images/mangga 2.jpg" alt="">
-                        </div>
-                        <div class="down-content">
-                            <span>
-                                <sup>Rp</sup>8.500
-                            </span>
-                            <h4>Mangga Manis Manalagi</h4>
-                            <ul class="social-icons">
-                                <li><a href="product-detail-mangga.html">+ View More</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                    <?php }; ?>
+                
             </div>
 
             <br>
