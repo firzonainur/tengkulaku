@@ -48,6 +48,9 @@
                     case 'daftarProduk':
                         include 'page/data_produk.php';
                         break;
+                    case 'daftarPesan':
+                        include 'page/data_pesan.php';
+                        break;
                     // Admin
                     case 'daftarProdukAdmin':
                         include 'page/data_produk_admin.php';
@@ -57,6 +60,10 @@
                         break;
                     case 'daftarCustomerAdmin':
                         include 'page/data_customer_admin.php';
+                        break;
+                    //customer
+                    case 'dashboardCustomer':
+                        include 'page/dashboard_customer.php';
                         break;
                     default:
                         include 'page/beranda.php';

@@ -1,5 +1,9 @@
 <!-- ***** Call to Action Start ***** -->
-
+<?php 
+$id = $_GET['id'];
+$query = mysqli_query($conn, "SELECT p.*, (SELECT u.kota FROM user u Where u.id_user = p.id_user) as nama FROM produk p Where p.id_produk = $id");
+while ($hasil = mysqli_fetch_array($query)) :
+?>
     <section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
         <div class="container">
             <div class="row">
@@ -7,8 +11,21 @@
                     <div class="cta-content">
                         <br>
                         <br>
-                        <h2> <em><sup>Rp.</sup>10.000/Kg</em></h2>
-                        <p>JERUK MALANG</p>
+                        <?php 
+                        $a = str_split($hasil['harga']);
+                        $b = 0;
+                        $harga = '';
+                        for ($i=count($a)-1; $i >= 0 ; $i--) {
+                          if ($b++ == 3) {
+                           $harga .= '.';  
+                           $b = 1;
+                          }
+                            $harga .= $a[$i];
+                        }
+                        $a = strrev($harga);
+                         ?>
+                        <h2> <em><sup>Rp. <?= $a ?></sup>/Kg</em></h2>
+                        <p><?= strtoupper($hasil['nama_produk']) ?></p>
                     </div>
                 </div>
             </div>
@@ -32,13 +49,13 @@
                   </ol>
                   <div class="carousel-inner">
                     <div class="carousel-item active">
-                      <img class="d-block w-100" src="assets/images/jeruk 1.jpg" alt="First slide">
+                      <img class="d-block w-100" src="back/img/produk/<?= $hasil['foto'] ?>" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                      <img class="d-block w-100" src="assets/images/jeruk 2.jpg" alt="Second slide">
+                      <img class="d-block w-100" src="back/img/produk/<?= $hasil['foto'] ?>" alt="Second slide">
                     </div>
                     <div class="carousel-item">
-                      <img class="d-block w-100" src="assets/images/jeruk 3.jpg" alt="Third slide">
+                      <img class="d-block w-100" src="back/img/produk/<?= $hasil['foto'] ?>" alt="Third slide">
                     </div>
                   </div>
                   <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -57,27 +74,24 @@
               <div class="col-md-4">
                 <div class="contact-form">
                   <form action="#" id="contact">
-                    <div class="form-group">Jeruk manis ini memiliki ukuran yang lebih besar dari jeruk biasanya. Teksturnya dalamnya lebih lembut. Jeruk manis ini merupakan hasil budidaya petani lokal dari Kab. Malang yang bekerja sama dengan Tengkulaku sehingga dapat membantu menekan harga jual dan juga meningkatkan kualitas produk.
+                    <div class="form-group"><?=$hasil['deskripsi'] ?>
                       <p></p>
                     </div>
                     
                     <label>Area</label>
-
-                    <select>
-                        <option value="0">Malang Raya</option>
-                        <option value="1">Luar Malang Raya</option>
-                    </select>
+                    <span><?= $hasil['nama'] ?></span>
 
                     <div class="row">
                       <div class="col-md-6">
-                        <label>Jumlah pembelian (Kg)</label>
-
-                        <input type="text" placeholder="0">
+                        <label>Stok (Kg) <?= $hasil['stok'] ?> </label>
                       </div>
                     </div>
                     
-                    <div class="main-button">
-                        <a href="checkout.html">Beli</a>
+                    <div class="main-button" style="display: inline-block;">
+                        <a href='#' data-ket ='beli' data-id="<?= $hasil['id_produk']?>" class="cekLogin">Beli</a>
+                    </div>
+                    <div class="main-button" style="display: inline-block;">
+                        <a href='#' data-ket ='keranjang' data-id="<?= $hasil['id_produk']?>" class="cekLogin">Keranjang</a>
                     </div>
                   </form>
                 </div>
@@ -87,4 +101,7 @@
             </div>
         </div>
     </section>
+<?php 
+endwhile;
+ ?>
     <!-- ***** Fleet Ends ***** -->

@@ -13,13 +13,15 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+            
+
+            <?php if ($_SESSION['level'] == 'seller') : ?>
+
             <li class="nav-item active">
                 <a class="nav-link" href="?url=dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-
-            <?php if ($_SESSION['level'] == 'seller') : ?>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -53,7 +55,7 @@
 
             <!-- Nav Item - Tambah Produk -->
             <li class="nav-item">
-                <a class="nav-link" href="?url=daftarProduk">
+                <a class="nav-link" href="?url=daftarPesan">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Daftar Order</span></a>
             </li>
@@ -63,6 +65,12 @@
                 endif;
                 if ($_SESSION['level'] == 'admin') :
              ?>
+
+             <li class="nav-item active">
+                <a class="nav-link" href="?url=dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -100,47 +108,47 @@
             </li>
             <?php 
                 endif;
-                 if ($_SESSION['level'] == 'customer') :
+                if ($_SESSION['level'] == 'customer') :
             ?>
-
-            <!-- Divider -->
+            <li class="nav-item active">
+                <a class="nav-link" href="?url=dashboardCustomer">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+             <!-- Divider -->
             <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Data
+                Data 
             </div>
-
-            <!-- Nav Item - Tambah Produk -->
+             <!-- Nav Item - Tambah Produk -->
             <li class="nav-item">
-                <a class="nav-link" href="?url=daftarPesananCustomer">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Pesanan</span></a>
+            </li>
 
-            <?php endif; ?>
-
-           <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-               
-            </div>
+           
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
                 <img class="sidebar-card-illustration mb-2" src="img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>Back to Home</strong> Beli Sesuai Kebutuhan Anda</p>
+                <p class="text-center mb-2"><strong>Tengkulaku </strong>Dapatkan Promo Menarik</p>
                 <a class="btn btn-success btn-sm" href="../index.php">Home</a>
-
             </div>
 
-            <div class="sidebar-card d-none d-lg-flex">
-                <button class="text-center rounded-circle border-0" id="sidebarToggle"></button>
+
+            <?php 
+                endif;
+            ?>
+
+             <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-
-            
-
-
         </ul>
         <!-- End of Sidebar -->

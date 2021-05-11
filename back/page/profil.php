@@ -11,15 +11,16 @@
                     <div class="card-header py-3 text-center">
                         <h6 class="m-0 font-weight-bold text-priCard Example">Data Profil Anda</h6>
                     </div>
+                    <?php 
+                        $no=1;
+                        $sesi=$_SESSION['id_user'];
+                        $sql = mysqli_query($conn, "SELECT * FROM user WHERE id_user=$sesi");
+                        while ($hasil = mysqli_fetch_array($sql)) { 
+                    ?>
                     <div class="card-body m-auto">
                        <div class="" style="width: 18rem;">
-                          <img src="img/undraw_profile.svg" class="card-img-top" alt="...">
-                          <?php 
-                              $no=1;
-                              $sesi=$_SESSION['id_user'];
-                              $sql = mysqli_query($conn, "SELECT * FROM user WHERE id_user=$sesi");
-                              while ($hasil = mysqli_fetch_array($sql)) { 
-                          ?>
+                          <img src="../back/img/profil/<?php echo $hasil['profil'] ?>" class="card-img-top" alt="...">
+                          
                           <div class="card-body text-center">
                             <h5 class="card-title"><?php echo $hasil['nama'] ?></h5>
                             <p class="card-text"></p>
@@ -83,10 +84,18 @@
                           </div>
                           <div class="col-lg-6">
                              <div class="form-group">
-                                <label for="exampleFormControlFile1">Input Gambar</label>
-                                <input type="file" class="form-control-file" id="exampleFormControlFile1" >
+                                <div class="col-lg-6">
+                                 <div class="form-group">
+                                    <label for="exampleFormControlFile1">Input Gambar</label>
+                                    <input type="file" class="form-control-file" id="exampleFormControlFile1" name="gambar" accept="image/*" onchange="loadFileProfil(event)">
+                                  </div>
+                                  <div class="container-fluid" style="height: 200px; width: 200px;">
+                                    <img id="imgsrcprofil" src="../back/img/profil/<?php echo $hasil['profil'] ?>" class="img-fluid" alt="...">
+                                  </div>
+                                  
                               </div>
-                              <img src="img/undraw_profile.svg" class="img-thumbnail" alt="..." style="height: 100px; width:100px;">
+                              </div>
+                             <!--  <img src="img/undraw_profile.svg" class="img-thumbnail" alt="..." style="height: 100px; width:100px;"> -->
                           </div>
                           <div class="form-group m-auto">
                             <input class="btn btn-primary" type="submit" value="Update" class="form-control" id="stok_produk" rows="3">

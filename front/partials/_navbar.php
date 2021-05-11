@@ -16,7 +16,10 @@
                                 <a href="?url=produk" <?php if (!isset($_GET['url']) || $_GET['url'] == 'produk') echo 'class="active"'; else 'class=""'?>>Produk</a>
                             </li>
                             <li>
-                                <a href="?url=checkout" <?php if (!isset($_GET['url']) || $_GET['url'] == 'checkout') echo 'class="active"'; else 'class=""'?>>Checkout</a>
+                                <a href="#" data-ket ='basket' data-id="0" <?php if (!isset($_GET['url']) || $_GET['url'] == 'basket') echo 'class="active cekLogin"'; else echo 'class="cekLogin"'?>>Keranjang</a>
+                            </li>
+                            <li>
+                                <a href="#" data-ket ='checkout' data-id="0" <?php if (!isset($_GET['url']) || $_GET['url'] == 'checkout') echo 'class="active cekLogin"'; else echo 'class="cekLogin"'?>>Checkout</a>
                             </li>
                             <li class="dropdown">
                                 <a <?php if (!isset($_GET['url']) || $_GET['url'] == 'tentangKami') echo 'class="dropdown-toggle active"'; else 'class="dropdown-toggle"'?> data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">TENTANG</a>
@@ -38,12 +41,12 @@
                                     
                                         <a href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <span class="mr-2 d-none d-lg-inline"><?php echo $hasil['nama']; ?></span>
-                                            <img class="img-profile rounded-circle" style="width: 20px; height: 20px;" src="assets/images/Profil.jpg">
+                                            <img class="img-profile rounded-circle" style="width: 20px; height: 20px;" src="back/img/profil/<?php echo $hasil['profil']; ?>">
                                         </a>
                                         <!-- Dropdown - User Information -->
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                             aria-labelledby="userDropdown">
-                                            <a class="dropdown-item" href="back/index.php?url=daftarPesananCustomer">
+                                             <a class="dropdown-item" href="back/index.php?url=dashboardCustomer">
                                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                                 Dashboard
                                             </a>

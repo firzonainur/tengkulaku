@@ -29,7 +29,7 @@
                                     
                                     <tbody>
                                         <?php 
-                                            $sql = mysqli_query($conn, "SELECT * FROM produk ");
+                                            $sql = mysqli_query($conn, "SELECT p.*, (SELECT u.nama from user u where u.id_user = p.id_user) as nama FROM produk p ");
                                             while ($hasil = mysqli_fetch_array($sql)) :
                                         ?>
                                         <tr>
@@ -41,7 +41,7 @@
                                             <td><?= $hasil['deskripsi'] ?></td>
                                             <td><?= $hasil['verifikasi'] ?></td>
                                             <td><?= $hasil['tgl_upload'] ?></td>
-                                            <td><?= $hasil['id_user'] ?></td>
+                                            <td><?= $hasil['nama'] ?></td>
                                             <td class="text-center">
                                                 <a href="fungsi/validasi_produk.php?id=<?=$hasil['id_produk'] ?>" class="btn btn-success btn-circle">
                                                     <i class="fas fa-check"></i>

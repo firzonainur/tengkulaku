@@ -49,7 +49,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $hasil['nama']; ?></span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="../back/img/profil/<?php echo $hasil['profil'] ?>">
                             </a>
                         <?php } ?>
                             <!-- Dropdown - User Information -->

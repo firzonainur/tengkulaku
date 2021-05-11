@@ -43,7 +43,9 @@
                      case 'kontak':
                         include 'front/page/kontak.php';
                         break;
-                     
+                    case 'basket':
+                        include 'front/page/basket.php';
+                        break;
                     default:
                         include 'front/page/home.php';
                         break;

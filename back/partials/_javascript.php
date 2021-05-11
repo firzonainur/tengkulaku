@@ -35,4 +35,26 @@
         URL.revokeObjectURL(output.src) // free memory
       }
     };
+
+     //live preview
+      var loadFileProfil = function(event) {
+      var output = document.getElementById('imgsrcprofil');
+      output.src = URL.createObjectURL(event.target.files[0]);
+      output.onload = function() {
+        URL.revokeObjectURL(output.src) // free memory
+      }
+    };
+
+    $(".detailButton").on('click', function() {
+          const id = $(this).data('id');
+          $.ajax({
+            url:"fungsi/fungsi_detail_ajax.php",
+            data:{id:id},
+            method:'post',
+            dataType:'json',
+            success:function(data) {
+              document.getElementById('isidetail').innerHTML = data;
+            }
+          });
+        });
     </script>

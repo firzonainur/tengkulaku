@@ -23,7 +23,7 @@
             <br>
             <div class="row">
                     <?php 
-                        $sql = mysqli_query($conn, "SELECT * FROM produk WHERE verifikasi='diterima' ");
+                        $sql = mysqli_query($conn, "SELECT p.*, (SELECT u.nama From user u WHERE u.id_user = p.id_user and u.level = 2 ) as penjual FROM produk p WHERE p.verifikasi = 'diterima'");
                         while ($hasil = mysqli_fetch_array($sql)) {
                     ?>
                 <div class="col-lg-4">
@@ -37,7 +37,7 @@
                             </span>
 
                             <span style="margin-left: 100px">
-                                <sup></sup>Penjual : <?php echo $hasil['id_user']; ?>
+                                <sup></sup>Penjual : <?php echo $hasil['penjual']; ?>
                             </span>
 
                             <h4><?php echo $hasil['nama_produk']; ?></h4>
@@ -45,7 +45,7 @@
                             <p><?php echo $hasil['deskripsi']; ?></p>
 
                             <ul class="social-icons">
-                                <li><a href="?url=detailProduk">+ Order</a></li>
+                                <li><a href="?url=detailProduk&id=<?= $hasil['id_produk'] ?>">+ Order</a></li>
                             </ul>
                         </div>
                     </div>
