@@ -18,7 +18,7 @@
             <?php if ($_SESSION['level'] == 'seller') : ?>
 
             <li class="nav-item active">
-                <a class="nav-link" href="?url=dashboard">
+                <a class="nav-link" href="?url=dashboardSeller">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -124,7 +124,7 @@
             </div>
              <!-- Nav Item - Tambah Produk -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="?url=dataPesanCustomer">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Data Pesanan</span></a>
             </li>

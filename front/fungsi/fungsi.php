@@ -19,16 +19,25 @@
 				$hasil = mysqli_fetch_array($query);
 				echo json_encode($hasil);
 				break;
+			case 'baskett':
+				$idU = $_POST['idU'];
+				$query = mysqli_query($conn, "SELECT alamat, kota, provinsi FROM user where id_user = $idU");
+				$hasil = mysqli_fetch_array($query);
+				echo json_encode($hasil);
+				break;
 			case 'tumbas':
-				$query = "INSERT into pesan (id_pembeli, tgl_pesan, status_order, biaya_kirim, biaya_produk, total, keterangan, alamat, kota, provinsi) values (?,?,?,?,?,?,?,?,?,?)";
+				$query = "INSERT into pesan (id_pembeli, tgl_pesan, status_order, metode_kirim, biaya_kirim, biaya_produk, total,  metode_bayar, keterangan, alamat, kota, provinsi) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 				$cek_log = $conn->prepare($query);
-				$cek_log->bind_param('issiiissss', $id_pembeli, $tgl, $status, $ongkir, $biaya_produk, $total, $ket, $alamat, $kota, $prov);
+				$cek_log->bind_param('issiiiiissss', $id_pembeli, $tgl, $status, $MK, $ongkir, $biaya_produk, $total, $MB, $ket, $alamat, $kota, $prov);
 				$id_pembeli = $_SESSION['id_user'];
 				$tgl = date('Y-m-d');
 				$status = 'diproses';
-				$ongkir = 0;
+				$pecah = explode("/", $_POST['metodekirim']);
+				$MK = $pecah[0];
+				$ongkir = $pecah[1];
 				$biaya_produk = $_POST['total'];
-				$total = $biaya_produk + $ongkir;
+				$MB = $_POST['metodebayar'];
+				$total = $_POST['totalA'];
 				$ket = 'proses';
 				$alamat = $_POST['alamat'];
 				$kota = $_POST['kota'];
@@ -70,15 +79,18 @@
 				header('location:../../index.php?url=basket');
 				break;
 			case 'tumbasKeranjang':
-				$query = "INSERT into pesan (id_pembeli, tgl_pesan, status_order, biaya_kirim, biaya_produk, total, keterangan, alamat, kota, provinsi) values (?,?,?,?,?,?,?,?,?,?)";
+				$query = "INSERT into pesan (id_pembeli, tgl_pesan, status_order, biaya_kirim, biaya_produk, total, keterangan, alamat, kota, provinsi, metode_kirim, metode_bayar) values (?,?,?,?,?,?,?,?,?,?,?,?)";
 				$cek_log = $conn->prepare($query);
-				$cek_log->bind_param('issiiissss', $id_pembeli, $tgl, $status, $ongkir, $biaya_produk, $total, $ket, $alamat, $kota, $prov);
+				$cek_log->bind_param('issiiissssii', $id_pembeli, $tgl, $status, $ongkir, $biaya_produk, $total, $ket, $alamat, $kota, $prov, $MK, $MB);
 				$id_pembeli = $_SESSION['id_user'];
 				$tgl = date('Y-m-d');
 				$status = 'diproses';
-				$ongkir = 0;
+				$pecah = explode("/", $_POST['metodekirim']);
+				$MK = $pecah[0];
+				$ongkir = $pecah[1];
 				$biaya_produk = $_POST['total'];
-				$total = $biaya_produk + $ongkir;
+				$MB = $_POST['metodebayar'];
+				$total = $_POST['totalA'];
 				$ket = 'proses';
 				$query0 = mysqli_query($conn, "SELECT alamat, kota, provinsi FROM user where id_user = $id_pembeli");
 				$hasil0 = mysqli_fetch_row($query0);
@@ -111,7 +123,7 @@
 				}
 
 
-				header('location:../../index.php');
+				// header('location:../../index.php');
 				break;
 			default:
 				# code...

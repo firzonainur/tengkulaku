@@ -18,9 +18,6 @@
                             <li>
                                 <a href="#" data-ket ='basket' data-id="0" <?php if (!isset($_GET['url']) || $_GET['url'] == 'basket') echo 'class="active cekLogin"'; else echo 'class="cekLogin"'?>>Keranjang</a>
                             </li>
-                            <li>
-                                <a href="#" data-ket ='checkout' data-id="0" <?php if (!isset($_GET['url']) || $_GET['url'] == 'checkout') echo 'class="active cekLogin"'; else echo 'class="cekLogin"'?>>Checkout</a>
-                            </li>
                             <li class="dropdown">
                                 <a <?php if (!isset($_GET['url']) || $_GET['url'] == 'tentangKami') echo 'class="dropdown-toggle active"'; else 'class="dropdown-toggle"'?> data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">TENTANG</a>
                               

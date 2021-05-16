@@ -57,14 +57,78 @@
                                 <tr>
                                    <td colspan="2">Total</td>
                                    <td><?= $total ?></td>
-                                   <input type="hidden" value="<?= $total ?>" name="total">
+                                   <input type="hidden" class="form-control total" name="total" id='bas_total0' readonly="" value="<?= $total ?>"></td>
                                 </tr>
                                 <tr>
                                     <td align="right" colspan="3">
-                                        <button type="submit">checkout</button>
+                                        <button data-ket ='baskett' data-id="<?= $hasil['id_produk']?>" class="cekLogin" type="button">Checkout</button>
                                     </td>
                                 </tr>
                             </table>
+                            <div class="modal fade" id="baskett" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Masukan Informasi Pembelian</h5>
+                                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <table class="table" id="tableBasket">
+                                                <tr>
+                                                    <td>Alamat</td>
+                                                    <td><input type="text" class="form-control" name="alamat" id='bas_alamat' value=""></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kota</td>
+                                                    <td><input type="text" class="form-control" name="kota" id='bas_kota' value=""></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Provinsi</td>
+                                                    <td><input type="text" class="form-control" name="provinsi" id='bas_provinsi' value=""></td>
+                                                </tr>
+                                                <tr>
+                                                <td>Metode Kirim</td>
+                                                <td>
+                                                    <select name="metodekirim" id="" required="" class="form-control MKMK2">
+                                                        <?php 
+                                                            $query = mysqli_query($conn, "SELECT * FROM metode_kirim");
+                                                            while ($hasil = mysqli_fetch_array($query)) { ?>
+                                                                <option value="<?= $hasil['id_MK']?>/<?=$hasil['bayar_MK']?>"><?= $hasil['nama_MK']?>  --- <?=$hasil['bayar_MK']?></option>;
+                                                        <?php }
+                                                        ?>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    Metode Bayar
+                                                </td>
+                                                <td>
+                                                    <select name="metodebayar" id="" required="" class="form-control MBMB2">
+                                                        <?php 
+                                                            $query = mysqli_query($conn, "SELECT * FROM metode_bayar");
+                                                            while ($hasil = mysqli_fetch_array($query)) {?>
+                                                                <option value="<?= $hasil['id_MB']?>/<?= $hasil['biaya_MB']?>"><?= $hasil['nama_MB']?>  --- <?=$hasil['biaya_MB']?></option>;
+                                                            <?php }
+                                                         ?>
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                                <tr>
+                                                    <td>Total</td>
+                                                    <td><input type="text" class="form-control total" name="totalA" id='bas_totalA' readonly="" value=""></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Kirim</button>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
 

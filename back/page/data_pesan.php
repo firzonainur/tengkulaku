@@ -43,9 +43,9 @@
                                                         <i class="fas fa-plane"></i>
                                                     </a>
                                                 <?php }else{ ?>
-                                                    <button disabled="" class="btn btn-danger btn-circle">
+                                                    <!-- <button disabled="" class="btn btn-danger btn-circle">
                                                         <i class="fas fa-plane"></i>
-                                                    </button>
+                                                    </button> -->
                                                 <?php } ?>
                                             </td>
                                         </tr>

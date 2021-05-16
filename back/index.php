@@ -36,8 +36,8 @@
                     $url = $_GET['url'];
 
                     switch ($url) {
-                    case 'dashboard':
-                        include 'page/beranda.php';
+                    case 'dashboardSeller':
+                        include 'page/dashboard_seller.php';
                         break;
                      case 'profil':
                         include 'page/profil.php';
@@ -52,6 +52,9 @@
                         include 'page/data_pesan.php';
                         break;
                     // Admin
+                    case 'dashboard':
+                        include 'page/beranda.php';
+                        break;
                     case 'daftarProdukAdmin':
                         include 'page/data_produk_admin.php';
                         break;
@@ -65,12 +68,15 @@
                     case 'dashboardCustomer':
                         include 'page/dashboard_customer.php';
                         break;
+                    case 'dataPesanCustomer':
+                        include 'page/data_pesan_customer.php';
+                        break;
                     default:
-                        include 'page/beranda.php';
+                        include 'page/default_dashboard.php';
                         break;
                     }
                     } else{
-                        include 'page/beranda.php';
+                        include 'page/default_dashboard.php';
                     }
                 ?>
                 <!-- /.container-fluid -->

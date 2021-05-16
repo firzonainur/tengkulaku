@@ -57,4 +57,17 @@
             }
           });
         });
+    $(".detailPesananB").on('click', function() {
+          const id = $(this).data('id');
+          $.ajax({
+            url:"fungsi/fungsi_detail_pesan_ajax.php",
+            data:{id:id},
+            method:'post',
+            dataType:'json',
+            success:function(data) {
+              document.getElementById('isidetailpesan').innerHTML = data;
+            }
+          });
+        });
     </script>
+

@@ -50,7 +50,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>Total</td>
+                            <td>Total Produk</td>
                             <td><input type="text" class="form-control total" name="total" id='b_total' readonly="" value=""></td>
                         </tr>
                         <tr>
@@ -64,6 +64,38 @@
                         <tr>
                             <td>Provinsi</td>
                             <td><input type="text" class="form-control" name="provinsi" id='b_provinsi' value=""></td>
+                        </tr>
+                       <tr>
+                            <td>Metode Kirim</td>
+                            <td>
+                                <select name="metodekirim" id="" required="" class="form-control MKMK1">
+                                    <?php 
+                                        $query = mysqli_query($conn, "SELECT * FROM metode_kirim");
+                                        while ($hasil = mysqli_fetch_array($query)) { ?>
+                                            <option value="<?= $hasil['id_MK']?>/<?=$hasil['bayar_MK']?>"><?= $hasil['nama_MK']?>  --- <?=$hasil['bayar_MK']?></option>;
+                                    <?php }
+                                    ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Metode Bayar
+                            </td>
+                            <td>
+                                <select name="metodebayar" id="" required="" class="form-control MBMB1">
+                                    <?php 
+                                        $query = mysqli_query($conn, "SELECT * FROM metode_bayar");
+                                        while ($hasil = mysqli_fetch_array($query)) {?>
+                                            <option value="<?= $hasil['id_MB']?>/<?= $hasil['biaya_MB']?>"><?= $hasil['nama_MB']?>  --- <?=$hasil['biaya_MB']?></option>;
+                                        <?php }
+                                     ?>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Total Bayar</td>
+                            <td><input type="text" class="form-control total" name="totalA" id='b_total_a' readonly="" value=""></td>
                         </tr>
                     </table>
                 </div>

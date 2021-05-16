@@ -41,9 +41,7 @@
                                             <td><?= $hasil['verifikasi'] ?></td>
                                             <td><?= $hasil['tgl_upload'] ?></td>
                                             <td class="text-center">
-                                                <a href="fungsi/edit.php?id=<?= $hasil['id_produk'] ?>" class="btn btn-success btn-circle">
-                                                    <i class="fas fa-edit"></i>
-                                                </a>
+                                               
                                                 <a href="fungsi/hapus.php?id=<?= $hasil['id_produk'] ?>" class="btn btn-danger btn-circle">
                                                     <i class="fas fa-trash"></i>
                                                 </a>

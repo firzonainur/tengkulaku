@@ -22,7 +22,7 @@
                                             <th>Alamat</th>
                                             <th>Kota</th>
                                             <th>Provinsi</th>
-                                            <th>Aksi</th>
+                                            <!-- <th>Aksi</th> -->
                                         </tr>
                                     </thead>
                                     
@@ -34,23 +34,21 @@
                                         ?>
                                         <tr>
                                             <td><?php echo $no++ ?></td>
-                                            <td class="text-center">
-                                            <?= $hasil['profil'] ?>
-                                            </td>
+                                           <td class="text-center"><img src="img/profil/<?= $hasil['profil'] ?>" class="img-thumbnail" alt="..." style="height: 50px; width:50px;"></td>
                                             <td><?= $hasil['nama'] ?></td>
                                             <td><?= $hasil['email'] ?></td>
                                             <td><?= $hasil['no_hp'] ?></td>
                                             <td><?= $hasil['alamat'] ?></td>
                                             <td><?= $hasil['kota'] ?></td>
                                             <td><?= $hasil['provinsi'] ?></td>
-                                            <td class="text-center">
+                                           <!--  <td class="text-center">
                                                 <a href="#" class="btn btn-success btn-circle">
                                                     <i class="fas fa-check"></i>
                                                 </a> 
                                                 <a href="#" class="btn btn-danger btn-circle">
                                                     <i class="fas fa-trash"></i>
                                                 </a>
-                                            </td>
+                                            </td> -->
                                         </tr>
                                         <?php endwhile;?>
                                     </tbody>

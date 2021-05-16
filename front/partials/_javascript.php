@@ -23,9 +23,7 @@
             let z = <?php if(isset($_SESSION['id_user'])) echo "true"; else echo "false";  ?>;
             if (z) {
                 y = <?php if(isset($_SESSION['id_user'])) echo $_SESSION['id_user']; else echo "false" ?>;
-                if (a == 'checkout') {
-                    location = "index.php?url=checkout";
-                }else if(a == 'basket'){
+                if(a == 'basket'){
                     location = "index.php?url=basket";
                 }else if(a == 'beli'){
                     $.ajax({
@@ -42,7 +40,6 @@
                             $('#b_kota').val(data.kota) ;
                             $('#b_provinsi').val(data.provinsi) ;
                             $('#b_stok').val(data.stok) ;
-                            $('#b_metodePembayaran').val(data.b_metodePembayaran) ;
                             $('#b_id_seller').val(data.idSeller) ;
                             $('#beli').modal('show');
 
@@ -62,6 +59,19 @@
                             $('#k_stok').val(data.stok) ;
                             $('#k_id_seller').val(data.idSeller) ;
                             $('#keranjang').modal('show');
+                        }
+                      });
+                }else if(a == 'baskett'){
+                    $.ajax({
+                        url:"front/fungsi/fungsi.php?page=baskett",
+                        data:{idU:y},
+                        method:'post',
+                        dataType:'json',
+                        success:function(data) {                            
+                            $('#bas_alamat').val(data.alamat) ;
+                            $('#bas_kota').val(data.kota) ;
+                            $('#bas_provinsi').val(data.provinsi) ;
+                            $('#baskett').modal('show');
                         }
                       });
                 }
@@ -124,5 +134,49 @@
             }
             let total = harga * jml_sekartang;
             $('#k_total').val(total) ;
+        });
+        $(".MKMK1").on('change', function() {
+            let x = $(this).val();
+            let y = $('.MBMB1').val();
+            let a1 = x.split("/");
+            let b1 = parseInt(a1[1]);
+            let a2 = y.split("/");
+            let b2 = parseInt(a2[1]);
+            let jml_sekartang = parseInt($('#b_total').val());
+            let total = b1 + b2 + jml_sekartang;
+            $('#b_total_a').val(total) ;
+        });
+        $(".MBMB1").on('change', function() {
+            let x = $(this).val();
+            let y = $('.MKMK1').val();
+            let a1 = x.split("/");
+            let b1 = parseInt(a1[1]);
+            let a2 = y.split("/");
+            let b2 = parseInt(a2[1]);
+            let jml_sekartang = parseInt($('#b_total').val());
+            let total = b1 + b2 + jml_sekartang;
+            $('#b_total_a').val(total) ;
+        });
+        $(".MKMK2").on('change', function() {
+            let x = $(this).val();
+            let y = $('.MBMB2').val();
+            let a1 = x.split("/");
+            let b1 = parseInt(a1[1]);
+            let a2 = y.split("/");
+            let b2 = parseInt(a2[1]);
+            let jml_sekartang = parseInt($('#bas_total0').val());
+            let total = b1 + b2 + jml_sekartang;
+            $('#bas_totalA').val(total) ;
+        });
+        $(".MBMB2").on('change', function() {
+            let x = $(this).val();
+            let y = $('.MKMK2').val();
+            let a1 = x.split("/");
+            let b1 = parseInt(a1[1]);
+            let a2 = y.split("/");
+            let b2 = parseInt(a2[1]);
+            let jml_sekartang = parseInt($('#bas_total0').val());
+            let total = b1 + b2 + jml_sekartang;
+            $('#bas_totalA').val(total) ;
         });
     </script>
