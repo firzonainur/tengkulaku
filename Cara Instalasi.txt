@@ -1,0 +1,6 @@
+1. buka XAMPP Control Panel klik start pada APACHE dan MySQL
+2. Letakan file di htdocs dengan nama 'tengkulaku'
+3. Masukan database ke server dengan mengetik url localhost/phpmyadmin\
+4. Buat database baru berinama tengkulaku_3
+5. Import file tengkulaku_3.sql ke phpmyadmin
+6. Jalankan website dengan url localhost/tengkulaku
